@@ -82,16 +82,32 @@
         <h3 class="text-center mb-4" style="color: #ed1c24;">Login</h3>
         
         <!-- Formulário -->
-        <form>
+        <!-- <form action="/login/user" method="POST"> -->
+
+        @if(session()->has('success'))
+            {{ session()->get('success') }}
+        @endif
+
+        @error('error')            
+            <span style="color:red">{{ $message }}</span>
+        @enderror
+        <form action="{{ route('login.store') }}", method="post">
+        @csrf
             <!-- E-mail -->
             <div class="mb-3">
                 <label for="email" class="form-label">Endereço de E-mail</label>
-                <input type="email" class="form-control" id="email" placeholder="Seu e-mail" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Seu e-mail" required>
+                @error('email')
+                    <span>{{ $message }}</span>
+                @enderror
             </div>
             <!-- Senha -->
             <div class="mb-3">
                 <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" placeholder="Sua senha" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Sua senha" required>
+                @error('password')
+                    <span>{{ $message }}</span>
+                @enderror                
             </div>
             <!-- Botão de Login -->
             <div class="d-grid mb-3">

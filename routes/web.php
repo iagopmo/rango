@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CadastroController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,15 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('home');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
 Route::post('/cadastros/salvar', [CadastroController::class, 'store']);
+// Route::post('/login/user', [CadastroController::class, 'index']);
 Route::view('/cardapio', 'cardapio')->name('cardapio');
 Route::view('/contato', 'contato')->name('contato');
-Route::view('/login', 'login')->name('login');
+// Route::view('/login', 'login')->name('login');
 Route::view('/login-area-restrita', 'loginAreaRestrita')->name('login.area-restrita');
 Route::view('/carrinho', 'carrinho')->name('carrinho');
+
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/login', 'index')->name('login.index');
+    Route::post('/login', 'store')->name('login.store');
+    Route::get('/logout', 'destroy')->name('login.destroy');
+});

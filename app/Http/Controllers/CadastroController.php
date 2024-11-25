@@ -8,6 +8,14 @@ use App\Models\Cadastro;
 
 class CadastroController extends Controller
 {
+    public function index(Request $request) {
+        $email = $request->input('email');
+        $password = $request->input('password');
+        // $user = DB::select('select name, email, password from cadastros_user where ;');
+        $user = DB::table('cadastros_user')->where('email', '=', $email)->where('password', '=', $password)->get();
+        dd($user);
+        
+    }
     public function store(Request $request) {
         // $cadastro = new Cadastro();
 

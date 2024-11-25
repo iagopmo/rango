@@ -97,7 +97,7 @@
                 <button type="submit" class="btn btn-custom">Cadastrar</button>
             </div>
             <!-- Texto alternativo -->
-            <p class="text-center" style="color: #ed1c24;">Já tem uma conta? <a href="{{ route('login') }}" style="text-decoration: none; color: #d4171d;">Entre aqui</a></p>
+            <p class="text-center" style="color: #ed1c24;">Já tem uma conta? <a href="{{ route('login.index') }}" style="text-decoration: none; color: #d4171d;">Entre aqui</a></p>
         </form>
     </div>
 
